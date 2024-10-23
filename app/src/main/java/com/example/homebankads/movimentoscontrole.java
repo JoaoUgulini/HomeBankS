@@ -8,6 +8,7 @@ import android.widget.ListView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class movimentoscontrole {
 
@@ -60,35 +61,28 @@ public class movimentoscontrole {
             //("Erro (criação tabela)",ex.getMessage());
         }
     }
+    public List<String> Lista_movimentos(int id) {
+        List<String> listaDeMovimentos = new ArrayList<String>();
+        String CONSULTA_USUARIO ="SELECT tipo_opera,valor,destino,dataopera  FROM movimento where idusr="+id+" ORDER BY dataopera";
+        //idusr INTEGER
 
-   /* public void retorna_movimentos(String mes, String ano) {
-        movimentos mov = new movimentos();
-        String rm = "SELECT * FROM movimentos WHERE dataoperacao BETWEEN '"+ano+"'/'"+mes+"'/01 AND '"+ano+"'/'"+mes+"'/31";
         try{
             SQLiteDatabase bd=banco.getReadableDatabase();
-            ArrayList<String> linhas = new ArrayList<>();
-            ArrayAdapter meuAdapter = new ArrayAdapter(
-                    movimentoscontrole.this,
-                    android.R.layout.simple_list_item_1,
-                    android.R.id.listview,
-                    linhas);
-            Cursor c=bd.rawQuery(rm,null);
+            Cursor c=bd.rawQuery(CONSULTA_USUARIO,null);
             if (c.moveToFirst()) {
                 do {
-                    mov.setIdmov(Integer.parseInt(c.getString(0)));
-                    mov.setIdusr(Integer.parseInt(c.getString(1)));
-                    mov.setTipo_opera(c.getString(2));
-                    mov.setValor(Double.parseDouble(c.getString(3)));
-                    mov.setDestino(c.getString(4));
-                    mov.setDataopera(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").parse(c.getString(4)));
+                    listaDeMovimentos.add(c.getString(0)+" - "+c.getDouble(1)+" - "+c.getString(2)+" - "+ c.getString(3));
                 } while (c.moveToNext());
             }
             c.close();
             bd.close();
+            return listaDeMovimentos;
         }catch(Exception ex){
             //  ("Erro (criação tabela)",ex.getMessage());
+            return null;
+        }
 
-       */
+    }
     }
 
 

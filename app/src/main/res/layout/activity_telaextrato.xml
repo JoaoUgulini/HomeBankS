@@ -42,15 +42,9 @@
         tools:layout_editor_absoluteY="11dp" />
 
     <ListView
-        android:id="@+id/listview"
+        android:id="@+id/listaextrato"
         android:layout_width="match_parent"
-        android:layout_height="376dp" />
-
-    <Button
-        android:id="@+id/btextmostra"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mostrar" />
+        android:layout_height="323dp" />
 
     <Button
         android:id="@+id/btextratret"
